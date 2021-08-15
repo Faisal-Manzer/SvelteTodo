@@ -1,0 +1,35 @@
+image:
+  file: .gitpod.Dockerfile
+
+github:
+  prebuilds:
+    master: true
+    branches: true
+    pullRequests: true
+    pullRequestsFromForks: true
+    addCheck: true
+    addComment: false
+    addBadge: true
+
+tasks:
+  - name: Server
+    init: npm install
+    command: npm run dev
+    openMode: tab-after
+  - name: Git
+    command: zsh
+    openMode: tab-after
+
+vscode:
+  extensions:
+    - coenraads.bracket-pair-colorizer
+    - usernamehw.errorlens
+    - dbaeumer.vscode-eslint
+    - svelte.svelte-vscode
+
+ports:
+  - port: 3000
+    onOpen: open-browser
+    visibility: public
+  - port: 24678
+    onOpen: ignore
